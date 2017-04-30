@@ -2,7 +2,9 @@ package com.pgrenaud.android.drawerdemo;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,9 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private RelativeLayout contentLayout;
+    private FloatingActionButton fab;
     private FirstFragment firstFragment;
     private SecondFragment secondFragment;
 
@@ -34,6 +40,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Used for displaying Snackbar
+        contentLayout = (RelativeLayout) findViewById(R.id.main_content);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(contentLayout, R.string.fab_message, Snackbar.LENGTH_LONG).show();
+            }
+        });
 
         firstFragment = FirstFragment.newInstance();
         secondFragment = SecondFragment.newInstance();

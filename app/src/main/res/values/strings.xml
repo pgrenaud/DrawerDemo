@@ -6,6 +6,8 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="fab_message">Hello world!</string>
+
     <string name="fragment_first">First</string>
     <string name="fragment_second">Second</string>
 </resources>
