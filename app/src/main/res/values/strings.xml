@@ -10,4 +10,6 @@
 
     <string name="fragment_first">First</string>
     <string name="fragment_second">Second</string>
+
+    <string name="app_chooser">Choose an application</string>
 </resources>

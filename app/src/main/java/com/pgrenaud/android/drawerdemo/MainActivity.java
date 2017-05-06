@@ -1,5 +1,7 @@
 package com.pgrenaud.android.drawerdemo;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -48,7 +50,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(contentLayout, R.string.fab_message, Snackbar.LENGTH_LONG).show();
+                String title = getResources().getString(R.string.app_chooser);
+
+//                Intent intent = new Intent(Intent.ACTION_SEND);
+//                intent.putExtra(Intent.EXTRA_TEXT, content);
+//                intent.setType("text/plain");
+
+//                Intent intent = new Intent(Intent.ACTION_DIAL);
+//                intent.setData(Uri.parse("tel:5555555555"));
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:45.4946761,-73.5622961"));
+
+                Intent chooser = Intent.createChooser(intent, title);
+                startActivity(chooser);
+
+//                Snackbar.make(contentLayout, R.string.fab_message, Snackbar.LENGTH_LONG).show();
             }
         });
 
